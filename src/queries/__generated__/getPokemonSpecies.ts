@@ -6,23 +6,23 @@
 import { pokemon_v2_pokemonspecies_order_by } from "./../../../__generated__/globalTypes";
 
 // ====================================================
-// GraphQL query operation: samplePokeAPIquery
+// GraphQL query operation: getPokemonSpecies
 // ====================================================
 
-export interface samplePokeAPIquery_pokemon_v2_pokemonspecies {
+export interface getPokemonSpecies_pokemon_v2_pokemonspecies {
   __typename: "pokemon_v2_pokemonspecies";
   name: string;
   id: number;
 }
 
-export interface samplePokeAPIquery {
+export interface getPokemonSpecies {
   /**
    * An array relationship
    */
-  pokemon_v2_pokemonspecies: samplePokeAPIquery_pokemon_v2_pokemonspecies[];
+  pokemon_v2_pokemonspecies: getPokemonSpecies_pokemon_v2_pokemonspecies[];
 }
 
-export interface samplePokeAPIqueryVariables {
+export interface getPokemonSpeciesVariables {
   limit?: number | null;
   offset?: number | null;
   order_by?: pokemon_v2_pokemonspecies_order_by[] | null;

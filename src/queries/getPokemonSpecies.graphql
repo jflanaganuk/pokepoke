@@ -1,4 +1,4 @@
-query samplePokeAPIquery(
+query getPokemonSpecies(
   $limit: Int
   $offset: Int
   $order_by: [pokemon_v2_pokemonspecies_order_by!]

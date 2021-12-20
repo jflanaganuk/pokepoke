@@ -7,7 +7,7 @@ import {
   ApolloProvider,
   ApolloLink,
 } from "@apollo/client";
-import { PokemonNames } from "./components/PokemonNames/PokemonNames";
+import { PokemonNamesWrapper } from "./components/PokemonNames/PokemonNamesWrapper";
 import { Pagination } from "./components/Pagination/Pagination";
 import "./app.scss";
 
@@ -32,7 +32,7 @@ function App() {
     <div>
       <h1>Pokemon Database</h1>
       <Pagination setCurrentPage={setPage} currentPage={page} totalPages={18} />
-      <PokemonNames currentPage={page} />
+      <PokemonNamesWrapper currentPage={page} />
       <Pagination setCurrentPage={setPage} currentPage={page} totalPages={18} />
     </div>
   );

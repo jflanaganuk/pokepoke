@@ -1,0 +1,35 @@
+query getPokemonDetail($where: pokemon_v2_pokemon_bool_exp) {
+  pokemon_v2_pokemon(where: $where) {
+    name
+    height
+    weight
+    pokemon_species_id
+    pokemon_v2_pokemonforms {
+      form_name
+      form_order
+      is_battle_only
+      is_default
+      is_mega
+      name
+      version_group_id
+    }
+    pokemon_v2_pokemongameindices {
+      game_index
+      version_id
+    }
+    pokemon_v2_pokemonmoves {
+      level
+      move_id
+      move_learn_method_id
+      pokemon_v2_move {
+        accuracy
+        contest_effect_id
+        contest_type_id
+        generation_id
+        move_damage_class_id
+        move_effect_chance
+        name
+      }
+    }
+  }
+}
