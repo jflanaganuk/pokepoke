@@ -13,10 +13,6 @@ query getPokemonDetail($where: pokemon_v2_pokemon_bool_exp) {
       name
       version_group_id
     }
-    pokemon_v2_pokemongameindices {
-      game_index
-      version_id
-    }
     pokemon_v2_pokemonmoves {
       level
       move_id
@@ -42,6 +38,14 @@ query getPokemonDetail($where: pokemon_v2_pokemon_bool_exp) {
             effect
           }
         }
+      }
+    }
+    pokemon_v2_encounters {
+      min_level
+      max_level
+      pokemon_v2_locationarea {
+        game_index
+        name
       }
     }
   }

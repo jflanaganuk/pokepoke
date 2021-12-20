@@ -26,6 +26,12 @@ function sanitize(
       name: form.name,
       version_group_id: form.version_group_id || 0,
     })),
+    encounters: input.pokemon_v2_encounters.map((encounter) => ({
+      game_index: encounter.pokemon_v2_locationarea?.game_index || 0,
+      max_level: encounter.max_level,
+      min_level: encounter.min_level,
+      name: encounter.pokemon_v2_locationarea?.name || "",
+    })),
     moves: input.pokemon_v2_pokemonmoves.map((move) => ({
       level: move.level,
       name: move.pokemon_v2_move?.name || "",
@@ -65,6 +71,7 @@ export function PokemonDetailWrapper() {
       height={pokemonSanitized.height}
       weight={pokemonSanitized.weight}
       moves={pokemonSanitized.moves}
+      encounters={pokemonSanitized.encounters}
       pokemon_species_id={pokemonSanitized.pokemon_species_id}
     />
   );

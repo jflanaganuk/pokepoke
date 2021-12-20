@@ -2,6 +2,7 @@ import React from "react";
 import css from "./PokemonDetail.scss";
 import { capitalizeFirstLetter, IMG_URL } from "../../utils";
 import { PokemonMoves } from "./PokemonMoves/PokemonMoves";
+import { PokemonEncounters } from "./PokemonEncounters/PokemonEncounters";
 
 export interface PokemonDetailProps {
   name: string;
@@ -16,6 +17,12 @@ export interface PokemonDetailProps {
     is_mega: boolean;
     name: string;
     version_group_id: number;
+  }[];
+  encounters: {
+    min_level: number;
+    max_level: number;
+    name: string;
+    game_index: number;
   }[];
   moves: {
     level: number;
@@ -38,6 +45,7 @@ export function PokemonDetail(props: PokemonDetailProps) {
         src={`${IMG_URL}${props.pokemon_species_id}.png`}
         alt=""
       />
+      <PokemonEncounters encounters={props.encounters} />
       <PokemonMoves moves={props.moves} />
     </div>
   );

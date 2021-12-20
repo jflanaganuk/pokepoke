@@ -20,12 +20,6 @@ export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonforms {
   version_group_id: number | null;
 }
 
-export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemongameindices {
-  __typename: "pokemon_v2_pokemongameindex";
-  game_index: number;
-  version_id: number | null;
-}
-
 export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pokemon_v2_move_pokemon_v2_type {
   __typename: "pokemon_v2_type";
   name: string;
@@ -85,6 +79,22 @@ export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves {
   pokemon_v2_move: getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pokemon_v2_move | null;
 }
 
+export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_encounters_pokemon_v2_locationarea {
+  __typename: "pokemon_v2_locationarea";
+  game_index: number;
+  name: string;
+}
+
+export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_encounters {
+  __typename: "pokemon_v2_encounter";
+  min_level: number;
+  max_level: number;
+  /**
+   * An object relationship
+   */
+  pokemon_v2_locationarea: getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_encounters_pokemon_v2_locationarea | null;
+}
+
 export interface getPokemonDetail_pokemon_v2_pokemon {
   __typename: "pokemon_v2_pokemon";
   name: string;
@@ -98,11 +108,11 @@ export interface getPokemonDetail_pokemon_v2_pokemon {
   /**
    * An array relationship
    */
-  pokemon_v2_pokemongameindices: getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemongameindices[];
+  pokemon_v2_pokemonmoves: getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves[];
   /**
    * An array relationship
    */
-  pokemon_v2_pokemonmoves: getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves[];
+  pokemon_v2_encounters: getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_encounters[];
 }
 
 export interface getPokemonDetail {
