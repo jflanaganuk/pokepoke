@@ -9,6 +9,7 @@ import {
 } from "@apollo/client";
 import { PokemonNames } from "./components/PokemonNames/PokemonNames";
 import { Pagination } from "./components/Pagination/Pagination";
+import "./app.scss";
 
 const uri = "https://beta.pokeapi.co/graphql/v1beta";
 
@@ -29,9 +30,10 @@ function App() {
   const [page, setPage] = useState(0);
   return (
     <div>
-      <h2>Pokemon Names: 🚀</h2>
+      <h1>Pokemon Database</h1>
+      <Pagination setCurrentPage={setPage} currentPage={page} totalPages={18} />
       <PokemonNames currentPage={page} />
-      <Pagination setCurrentPage={setPage} currentPage={page} totalPages={10} />
+      <Pagination setCurrentPage={setPage} currentPage={page} totalPages={18} />
     </div>
   );
 }

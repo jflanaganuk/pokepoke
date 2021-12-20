@@ -1,0 +1,17 @@
+.pagination {
+  display: flex;
+  justify-content: space-around;
+  p {
+    font-size: 2rem;
+    &:hover {
+      cursor: pointer;
+      color: var(--main-highlight-color);
+      text-decoration: underline;
+    }
+  }
+}
+
+.active {
+  color: var(--secondary-highlight-color);
+  text-decoration: underline;
+}

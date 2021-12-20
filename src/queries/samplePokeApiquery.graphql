@@ -9,5 +9,6 @@ query samplePokeAPIquery(
     order_by: $order_by
   ) {
     name
+    id
   }
 }

@@ -12,6 +12,7 @@ import { pokemon_v2_pokemonspecies_order_by } from "./../../../__generated__/glo
 export interface samplePokeAPIquery_pokemon_v2_pokemonspecies {
   __typename: "pokemon_v2_pokemonspecies";
   name: string;
+  id: number;
 }
 
 export interface samplePokeAPIquery {

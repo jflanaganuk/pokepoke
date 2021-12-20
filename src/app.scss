@@ -1,0 +1,15 @@
+:root {
+  --main-bg-color: #1e272e;
+  --main-color: #d2dae2;
+  --main-highlight-color: #4bcffa;
+  --secondary-highlight-color: #ffc048;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+html,
+body {
+  background-color: var(--main-bg-color);
+  color: var(--main-color);
+  font-family: "Raleway", sans-serif;
+}

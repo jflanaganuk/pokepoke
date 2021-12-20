@@ -50,7 +50,6 @@ module.exports = {
       ignoredNodes: ['TemplateLiteral', 'SwitchCase'],
     }],
     'react/require-default-props': 'off',
-    'react/destructuring-assignment': [2, 'always', { ignoreClassFields: true }],
     'react/button-has-type': 'off',
     'react/default-props-match-prop-types': 'off',
     'react/prefer-stateless-function': 'off',

@@ -6,6 +6,8 @@ import {
 } from "../../queries/__generated__/samplePokeAPIquery";
 import { order_by } from "../../../__generated__/globalTypes";
 import POKEMON_NAMES from "../../queries/samplePokeApiquery.graphql";
+import { PokemonRow } from "../PokemonRow/PokemonRow";
+import css from "./PokemonNames.scss";
 
 interface PokemonNamesProps {
   currentPage: number;
@@ -13,8 +15,8 @@ interface PokemonNamesProps {
 
 export function PokemonNames(props: PokemonNamesProps) {
   const variables: samplePokeAPIqueryVariables = {
-    limit: 10,
-    offset: props.currentPage * 10,
+    limit: 50,
+    offset: props.currentPage * 50,
     order_by: [
       {
         order: order_by.asc,
@@ -30,12 +32,10 @@ export function PokemonNames(props: PokemonNamesProps) {
 
   const results: samplePokeAPIquery = data;
   return (
-    <div>
+    <div className={css.pokeGrid}>
       {results.pokemon_v2_pokemonspecies.map((pokemon) => {
         return (
-          <div key={pokemon.name}>
-            <p>{pokemon.name}</p>
-          </div>
+          <PokemonRow key={pokemon.id} id={pokemon.id} name={pokemon.name} />
         );
       })}
     </div>
