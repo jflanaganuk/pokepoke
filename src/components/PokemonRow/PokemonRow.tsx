@@ -10,7 +10,7 @@ interface PokemonRowProps {
 
 export function PokemonRow(props: PokemonRowProps) {
   return (
-    <Link to={`/${props.id}`} className={css.pokemon}>
+    <Link to={`/pokemon/${props.id}`} className={css.pokemon}>
       <img width={128} src={`${IMG_URL}${props.id}.png`} />
       <p>
         #{props.id} {capitalizeFirstLetter(props.name)}

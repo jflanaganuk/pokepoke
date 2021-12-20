@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { render } from "react-dom";
 import {
   ApolloClient,
@@ -10,7 +10,12 @@ import {
 import { PokemonNamesWrapper } from "./components/PokemonNames/PokemonNamesWrapper";
 import { Pagination } from "./components/Pagination/Pagination";
 import "./app.scss";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  useParams,
+} from "react-router-dom";
 import { PokemonDetailWrapper } from "./components/PokemonDetail/PokemonDetailWrapper";
 
 const uri = "https://beta.pokeapi.co/graphql/v1beta";
@@ -29,13 +34,13 @@ const client = new ApolloClient({
 });
 
 function Home() {
-  const [page, setPage] = useState(0);
+  const { pageId }: { pageId: number | undefined } = useParams();
+  const page = Number(pageId || 0);
   return (
     <div>
       <h1>Pokemon Database</h1>
-      <Pagination setCurrentPage={setPage} currentPage={page} totalPages={18} />
+      <Pagination currentPage={page} totalPages={18} />
       <PokemonNamesWrapper currentPage={page} />
-      <Pagination setCurrentPage={setPage} currentPage={page} totalPages={18} />
     </div>
   );
 }
@@ -44,8 +49,11 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/:id">
+        <Route path="/pokemon/:id">
           <PokemonDetailWrapper />
+        </Route>
+        <Route path="/:pageId">
+          <Home />
         </Route>
         <Route path="/">
           <Home />

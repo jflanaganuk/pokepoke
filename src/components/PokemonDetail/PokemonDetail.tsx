@@ -28,7 +28,11 @@ export function PokemonDetail(props: PokemonDetailProps) {
       <h2>
         #{props.pokemon_species_id} {capitalizeFirstLetter(props.name)}
       </h2>
-      <img src={`${IMG_URL}${props.pokemon_species_id}.png`} alt="" />
+      <img
+        className={css.heroImage}
+        src={`${IMG_URL}${props.pokemon_species_id}.png`}
+        alt=""
+      />
     </div>
   );
 }
