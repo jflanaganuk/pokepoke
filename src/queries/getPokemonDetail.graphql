@@ -29,6 +29,19 @@ query getPokemonDetail($where: pokemon_v2_pokemon_bool_exp) {
         move_damage_class_id
         move_effect_chance
         name
+        power
+        pp
+        pokemon_v2_type {
+          name
+        }
+        pokemon_v2_movedamageclass {
+          name
+        }
+        pokemon_v2_moveeffect {
+          pokemon_v2_moveeffecteffecttexts {
+            effect
+          }
+        }
       }
     }
   }

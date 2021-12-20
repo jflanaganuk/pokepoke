@@ -29,6 +29,12 @@ function sanitize(
     moves: input.pokemon_v2_pokemonmoves.map((move) => ({
       level: move.level,
       name: move.pokemon_v2_move?.name || "",
+      power: move.pokemon_v2_move?.power || null,
+      pp: move.pokemon_v2_move?.pp || null,
+      effect:
+        move.pokemon_v2_move?.pokemon_v2_moveeffect
+          ?.pokemon_v2_moveeffecteffecttexts[0].effect || "",
+      type: move.pokemon_v2_move?.pokemon_v2_type?.name || "",
     })),
     pokemon_species_id: input.pokemon_species_id || 0,
   };

@@ -26,6 +26,29 @@ export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemongameindic
   version_id: number | null;
 }
 
+export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pokemon_v2_move_pokemon_v2_type {
+  __typename: "pokemon_v2_type";
+  name: string;
+}
+
+export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pokemon_v2_move_pokemon_v2_movedamageclass {
+  __typename: "pokemon_v2_movedamageclass";
+  name: string;
+}
+
+export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pokemon_v2_move_pokemon_v2_moveeffect_pokemon_v2_moveeffecteffecttexts {
+  __typename: "pokemon_v2_moveeffecteffecttext";
+  effect: string;
+}
+
+export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pokemon_v2_move_pokemon_v2_moveeffect {
+  __typename: "pokemon_v2_moveeffect";
+  /**
+   * An array relationship
+   */
+  pokemon_v2_moveeffecteffecttexts: getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pokemon_v2_move_pokemon_v2_moveeffect_pokemon_v2_moveeffecteffecttexts[];
+}
+
 export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pokemon_v2_move {
   __typename: "pokemon_v2_move";
   accuracy: number | null;
@@ -35,6 +58,20 @@ export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pok
   move_damage_class_id: number | null;
   move_effect_chance: number | null;
   name: string;
+  power: number | null;
+  pp: number | null;
+  /**
+   * An object relationship
+   */
+  pokemon_v2_type: getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pokemon_v2_move_pokemon_v2_type | null;
+  /**
+   * An object relationship
+   */
+  pokemon_v2_movedamageclass: getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pokemon_v2_move_pokemon_v2_movedamageclass | null;
+  /**
+   * An object relationship
+   */
+  pokemon_v2_moveeffect: getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves_pokemon_v2_move_pokemon_v2_moveeffect | null;
 }
 
 export interface getPokemonDetail_pokemon_v2_pokemon_pokemon_v2_pokemonmoves {

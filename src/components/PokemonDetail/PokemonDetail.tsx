@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./PokemonDetail.scss";
 import { capitalizeFirstLetter, IMG_URL } from "../../utils";
+import { PokemonMoves } from "./PokemonMoves/PokemonMoves";
 
 export interface PokemonDetailProps {
   name: string;
@@ -19,6 +20,10 @@ export interface PokemonDetailProps {
   moves: {
     level: number;
     name: string;
+    pp: number | null;
+    power: number | null;
+    type: string;
+    effect: string;
   }[];
 }
 
@@ -33,6 +38,7 @@ export function PokemonDetail(props: PokemonDetailProps) {
         src={`${IMG_URL}${props.pokemon_species_id}.png`}
         alt=""
       />
+      <PokemonMoves moves={props.moves} />
     </div>
   );
 }
