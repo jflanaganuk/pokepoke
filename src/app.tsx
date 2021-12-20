@@ -10,6 +10,8 @@ import {
 import { PokemonNamesWrapper } from "./components/PokemonNames/PokemonNamesWrapper";
 import { Pagination } from "./components/Pagination/Pagination";
 import "./app.scss";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { PokemonDetailWrapper } from "./components/PokemonDetail/PokemonDetailWrapper";
 
 const uri = "https://beta.pokeapi.co/graphql/v1beta";
 
@@ -26,7 +28,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App() {
+function Home() {
   const [page, setPage] = useState(0);
   return (
     <div>
@@ -35,6 +37,21 @@ function App() {
       <PokemonNamesWrapper currentPage={page} />
       <Pagination setCurrentPage={setPage} currentPage={page} totalPages={18} />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/:id">
+          <PokemonDetailWrapper />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

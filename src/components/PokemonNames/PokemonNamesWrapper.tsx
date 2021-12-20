@@ -7,6 +7,7 @@ import {
 import { order_by } from "../../../__generated__/globalTypes";
 import POKEMON_NAMES from "../../queries/getPokemonSpecies.graphql";
 import { PokemonNames } from "./PokemonNames";
+import { PokeballLoader } from "../PokeballLoader/PokeballLoader";
 
 interface PokemonNamesWrapperProps {
   currentPage: number;
@@ -18,7 +19,7 @@ export function PokemonNamesWrapper(props: PokemonNamesWrapperProps) {
     offset: props.currentPage * 50,
     order_by: [
       {
-        order: order_by.asc,
+        id: order_by.asc,
       },
     ],
   };
@@ -26,7 +27,7 @@ export function PokemonNamesWrapper(props: PokemonNamesWrapperProps) {
     variables,
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <PokeballLoader />;
   if (error) return <p>Error :(</p>;
 
   const results: getPokemonSpecies = data;

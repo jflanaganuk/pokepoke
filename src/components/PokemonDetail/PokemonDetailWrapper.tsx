@@ -7,10 +7,8 @@ import {
 } from "../../queries/__generated__/getPokemonDetail";
 import POKEMON_DETAIL from "../../queries/getPokemonDetail.graphql";
 import { PokemonDetail, PokemonDetailProps } from "./PokemonDetail";
-
-interface PokemonDetailWrapperProps {
-  id: number;
-}
+import { PokeballLoader } from "../PokeballLoader/PokeballLoader";
+import { useParams } from "react-router-dom";
 
 function sanitize(
   input: getPokemonDetail_pokemon_v2_pokemon
@@ -36,17 +34,18 @@ function sanitize(
   };
 }
 
-export function PokemonDetailWrapper(props: PokemonDetailWrapperProps) {
+export function PokemonDetailWrapper() {
+  const { id }: { id: number } = useParams();
   const variables: getPokemonDetailVariables = {
     where: {
       id: {
-        _eq: props.id,
+        _eq: id,
       },
     },
   };
   const { loading, error, data } = useQuery(POKEMON_DETAIL, { variables });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <PokeballLoader />;
   if (error) return <p>Error :(</p>;
 
   const results: getPokemonDetail = data;
