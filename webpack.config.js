@@ -35,7 +35,12 @@ module.exports = {
             {
                 test: /\.svg$/,
                 loader: '@svgr/webpack'
-            }
+            },
+            {
+                test: /\.(graphql|gql)$/,
+                exclude: /node_modules/,
+                loader: 'graphql-tag/loader',
+            },
         ]
     },
     plugins: [

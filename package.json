@@ -10,7 +10,7 @@
     "build": "webpack",
     "codegen:delete": "find . -type d -name \"__generated__\" -prune -exec rm -rf {} \\;",
     "codegen:schema": "apollo client:download-schema ./schema/pokemonapi-schema.json --endpoint='https://beta.pokeapi.co/graphql/v1beta'",
-    "codegen:types": "apollo codegen:generate --localSchemaFile=./schema/pokemonapi-schema.json --target=typescript --tagName=gql --includes=./src/serve.ts",
+    "codegen:types": "apollo codegen:generate --localSchemaFile=./schema/pokemonapi-schema.json --target=typescript --tagName=gql --includes=./src/queries/**/*.graphql",
     "eslint": "eslint src/**/*.ts --max-warnings=0 --report-unused-disable-directives && echo '✔  Your code looks good.'",
     "lint:check": "prettier --check src/",
     "lint:write": "prettier --write src/",

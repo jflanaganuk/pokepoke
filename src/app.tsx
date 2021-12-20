@@ -1,64 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { render } from "react-dom";
 import {
   ApolloClient,
   InMemoryCache,
-  gql,
   HttpLink,
   ApolloProvider,
-  useQuery,
-  ApolloLink
+  ApolloLink,
 } from "@apollo/client";
-import { samplePokeAPIquery } from "./__generated__/samplePokeAPIquery";
+import { PokemonNames } from "./components/PokemonNames/PokemonNames";
+import { Pagination } from "./components/Pagination/Pagination";
 
 const uri = "https://beta.pokeapi.co/graphql/v1beta";
 
 const client = new ApolloClient({
   link: ApolloLink.from([
-       new ApolloLink((operation, forward) => {
-          operation.setContext(() => ({
-            uri: `${uri || ''}?${operation.operationName}`,
-          }));
-          return forward ? forward(operation) : null;
-        }),
-      new HttpLink({ uri })
-    ]),
+    new ApolloLink((operation, forward) => {
+      operation.setContext(() => ({
+        uri: `${uri || ""}?${operation.operationName}`,
+      }));
+      return forward ? forward(operation) : null;
+    }),
+    new HttpLink({ uri }),
+  ]),
   cache: new InMemoryCache(),
 });
 
-const POKEMON_NAMES = gql`
-  query samplePokeAPIquery {
-    pokemon_v2_pokemonspecies {
-      name
-    }
-  }
-`;
-
-function PokemonNames() {
-  const { loading, error, data } = useQuery(POKEMON_NAMES);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  const results: samplePokeAPIquery = data;
-  return (
-    <div>
-      {results.pokemon_v2_pokemonspecies.map((pokemon) => {
-        return (
-          <div key={pokemon.name}>
-            <p>{pokemon.name}</p>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
 function App() {
+  const [page, setPage] = useState(0);
   return (
     <div>
       <h2>Pokemon Names: 🚀</h2>
-      <PokemonNames />
+      <PokemonNames currentPage={page} />
+      <Pagination setCurrentPage={setPage} currentPage={page} totalPages={10} />
     </div>
   );
 }

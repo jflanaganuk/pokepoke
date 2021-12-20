@@ -1,0 +1,13 @@
+query samplePokeAPIquery(
+  $limit: Int
+  $offset: Int
+  $order_by: [pokemon_v2_pokemonspecies_order_by!]
+) {
+  pokemon_v2_pokemonspecies(
+    limit: $limit
+    offset: $offset
+    order_by: $order_by
+  ) {
+    name
+  }
+}
