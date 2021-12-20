@@ -5,7 +5,6 @@ import {
   samplePokeAPIqueryVariables,
 } from "../../queries/__generated__/samplePokeAPIquery";
 import { order_by } from "../../../__generated__/globalTypes";
-// @ts-ignore
 import POKEMON_NAMES from "../../queries/samplePokeApiquery.graphql";
 
 interface PokemonNamesProps {
